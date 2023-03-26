@@ -3,14 +3,12 @@ import { computed, ref } from 'vue'
 import IconPause from '@/components/icons/icon-pause.vue'
 import IconStop from '@/components/icons/icon-stop.vue'
 import IconStart from '@/components/icons/icon-start.vue'
-import { useTimersStore } from '@/stores/timers'
 
 const properties = defineProps<{
   timeInSeconds: number
   id: number
 }>()
 
-const store = useTimersStore()
 const timeInSeconds = ref(properties.timeInSeconds)
 
 const timer = computed(() => {
@@ -48,7 +46,8 @@ const pauseStartClickHandler = () => {
 
 const stopClickHandler = () => {
   pause()
-  store.remove(properties.id)
+  isStarted.value = false
+  timeInSeconds.value = properties.timeInSeconds
 }
 </script>
 

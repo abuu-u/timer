@@ -22,9 +22,5 @@ export const useTimersStore = defineStore('timer', {
     add(timer: number) {
       this.timers.push({ timeInSeconds: timer, id: id.next() })
     },
-
-    remove(id: number) {
-      this.timers = this.timers.filter((timer) => timer.id !== id)
-    },
   },
 })
